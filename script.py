@@ -350,55 +350,55 @@ def check_pods(x=465, y=678, target_color='#60BE34'): # 465 678  | #60BE34
     
 def travel_to_bank():
     print("Voyage à la banque...")
-    time.sleep(2)  # Attendre un peu pour être sûr que l'interface réagisse
+    time.sleep(random.randint(2,3))  # Attendre un peu pour être sûr que l'interface réagisse
     pyautogui.doubleClick(772, 721)
-    time.sleep(0.5)  # Attendre un peu pour être sûr que l'interface réagisse
+    time.sleep(random.randint(0.5,1.5))  # Attendre un peu pour être sûr que l'interface réagisse
 
     pyautogui.click(440, 328)
-    time.sleep(0.5)  # Attendre un peu pour être sûr que l'interface réagisse
+    time.sleep(random.randint(0.5,1.5))  # Attendre un peu pour être sûr que l'interface réagisse
     pyautogui.click(486, 360)
-    time.sleep(1.5)
+    time.sleep(random.randint(1.5,2.5))
 
     pyautogui.click(305, 221)
-    time.sleep(1)  # Attendre un peu pour être sûr que l'interface réagisse
+    time.sleep(random.randint(1,2))  # Attendre un peu pour être sûr que l'interface réagisse
     pyautogui.click(309, 299)
-    time.sleep(1)  # Attendre un peu pour être sûr que l'interface réagisse
+    time.sleep(random.randint(1,2))  # Attendre un peu pour être sûr que l'interface réagisse
     pyautogui.click(479, 316)
-    time.sleep(4)  # Attendre un peu pour être sûr que l'interface réagisse
+    time.sleep(random.randint(4,5))  # Attendre un peu pour être sûr que l'interface réagisse
     pyautogui.click(541, 383)
-    time.sleep(0.5)  # Attendre un peu pour être sûr que l'interface réagisse
+    time.sleep(random.randint(0.5,1))  # Attendre un peu pour être sûr que l'interface réagisse
     pyautogui.click(563, 395)
-    time.sleep(1.5)  # Attendre un peu pour être sûr que l'interface réagisse
+    time.sleep(random.randint(1.5,2.5))  # Attendre un peu pour être sûr que l'interface réagisse
     pyautogui.click(163, 415)
-    time.sleep(0.5)  # Attendre un peu pour être sûr que l'interface réagisse
+    time.sleep(random.randint(0.5,1.5))  # Attendre un peu pour être sûr que l'interface réagisse
     pyautogui.click(726, 275)
-    time.sleep(0.5)  # Attendre un peu pour être sûr que l'interface réagisse
+    time.sleep(random.randint(0.5,1.5))  # Attendre un peu pour être sûr que l'interface réagisse
     
     pyautogui.keyDown('ctrl')
     for _ in range(20):
         pyautogui.doubleClick(680, 342)
-        time.sleep(0.3)  # Attendre un peu pour être sûr que l'interface réagisse
+        time.sleep(random.randint(0.3,0.9))  # Attendre un peu pour être sûr que l'interface réagisse
     pyautogui.keyUp('ctrl')
 
     pyautogui.press('esc')
-    time.sleep(0.5)  # Attendre un peu pour être sûr que l'interface réagisse
+    time.sleep(random.randint(0.5,1.5))  # Attendre un peu pour être sûr que l'interface réagisse
     pyautogui.doubleClick(741, 725)
-    time.sleep(0.5)  # Attendre un peu pour être sûr que l'interface réagisse
+    time.sleep(random.randint(0.5,1.5))  # Attendre un peu pour être sûr que l'interface réagisse
 
     pyautogui.click(484, 147)
-    time.sleep(4)
+    time.sleep(random.randint(4,5))
 
     pyautogui.click(862, 563)
-    time.sleep(4)
+    time.sleep(random.randint(4,5))
 
     pyautogui.click(673, 147)
-    time.sleep(8)
+    time.sleep(random.randint(8,9))
 
     pyautogui.click(104, 146)
-    time.sleep(10)
+    time.sleep(random.randint(10,11))
 
     pyautogui.click(860, 371)
-    time.sleep(8)
+    time.sleep(random.randint(8,9))
 
 
 # Add this function to execute the spell sequence
