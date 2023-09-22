@@ -12,24 +12,24 @@ Pour utiliser ce bot, vous aurez besoin de Python 3.x et de quelques modules sup
 
 Clonez ce dépôt sur votre machine locale :
 
-\`\`\`bash
+```bash
 git clone https://github.com/[VotreNomdUtilisateur]/bot-dofus.git
-\`\`\`
+```
 
 Installez les dépendances nécessaires :
 
-\`\`\`bash
+```bash
 pip install numpy pyautogui PyGetWindow opencv-python
-\`\`\`
+```
 
 ## Utilisation
 
 1. Ouvrez Dofus Rétro et positionnez la fenêtre du jeu comme vous le souhaitez.
 2. Exécutez le script Python :
 
-\`\`\`bash
+```bash
 python script.py
-\`\`\`
+```
 
 Le bot commencera à automatiser les combats en fonction des paramètres que vous avez définis dans le script.
 
