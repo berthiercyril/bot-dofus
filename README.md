@@ -1,4 +1,4 @@
-#bot-dofus
+bot-dofus
 Description
 Ce projet est un bot en Python destiné à automatiser certaines tâches dans le jeu Dofus Rétro. Le bot est capable de gérer des combats en mode automatique en utilisant la reconnaissance de pixels.
 
