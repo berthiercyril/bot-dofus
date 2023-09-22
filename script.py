@@ -123,7 +123,7 @@ def initiate_combat():
 
     x1, y1, x2, y2 = dofus_rect.left, dofus_rect.top, dofus_rect.right, dofus_rect.bottom
 
-    color_list = ["#24283C", "#C69E44", "#D5AA64", "#7194A6", "#FCEBC4", "#645446"] # #24283C = boulanger sombre | #C69E44 = bandit | #D5AA64 = mineur sombre | #7194A6 = forgeron | #FCEBC4 = bouftou & boufton blanc | #645446 = boufton noir
+    color_list = ["#FCEBC4", "#645446"] # #24283C = boulanger sombre | #C69E44 = bandit | #D5AA64 = mineur sombre | #7194A6 = forgeron | #FCEBC4 = bouftou & boufton blanc | #645446 = boufton noir
     while True:
         screenshot = pyautogui.screenshot(region=(x1, y1, x2-x1, y2-y1))
         screenshot_np = np.array(screenshot)
@@ -347,7 +347,7 @@ def execute_spell_bouftou():
 
     # Lance le spell 1 et 2, puis passe son tour
     self_cast_spell('1')
-    time.sleep(2)
+    time.sleep(random.randint(2, 3))
     self_cast_spell('2')
     pyautogui.press('space')
     print("Turn finished")
