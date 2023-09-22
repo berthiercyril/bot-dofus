@@ -239,10 +239,14 @@ def resize_window(window_title, width, height):
 
 def transparency_mode():
     print("Vérification de la transparence..")
-    # Vérifie si la couleur spécifique est présente à l'écran
-    if find_color("#FCEBC4") is None:
-        pyautogui.hotkey('t')  # Si la couleur n'est pas trouvée, appuyez sur "Maj + é"
-        print("Transparence Désactivée.")
+    dofus_window_rect = get_dofus_window()
+    
+    if dofus_window_rect is not None:
+        color_position = find_color("#FCEBC4", dofus_window_rect)
+        
+        if color_position is None:
+            pyautogui.hotkey('t')  # Si la couleur n'est pas trouvée, appuyez sur "t"
+            print("Transparence Désactivée.")
 
 
 def find_color(hex_color):
