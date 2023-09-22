@@ -18,8 +18,13 @@ def bouftou():
         return
     
     # show_rel_mouse_coords(window_title) # Affiche les coordonnées de la souris par rapport à la fenêtre Dofus
+
     
-    while True:  # Boucle infinie jusqu'à la fin du donjon
+    while True:  # Boucle infinie
+        if check_pods():  # Vérifie l'état des pods
+            travel_to_bank()  # Voyage à la banque si les pods sont pleins
+            continue  # Revenir au début de la boucle pour vérifier à nouveau
+        
         combat_success = initiate_combat()
         
         if not combat_success:
@@ -327,6 +332,73 @@ def target_cast_spell(key, x, y):
 
     pyautogui.click(x, y)
     print(f"Spell target selected at coordinates {x}, {y}.")
+
+
+def check_pods(x=465, y=678, target_color='#60BE34'): # 465 678  | #60BE34
+    # Prendre une capture d'écran des coordonnées spécifiées
+    pixel_color = pyautogui.screenshot().getpixel((x, y))
+    
+    # Convertir la couleur du pixel en hexadécimal
+    pixel_color_hex = '#{:02x}{:02x}{:02x}'.format(pixel_color[0], pixel_color[1], pixel_color[2]).upper()
+
+    # Vérifier si la couleur du pixel est égale à la couleur cible
+    if pixel_color_hex == target_color.upper():
+        print("Les pods sont pleins.")
+        return True
+    else:
+        return False
+    
+def travel_to_bank():
+    print("Voyage à la banque...")
+    time.sleep(2)  # Attendre un peu pour être sûr que l'interface réagisse
+    pyautogui.doubleClick(772, 721)
+    time.sleep(0.5)  # Attendre un peu pour être sûr que l'interface réagisse
+
+    pyautogui.click(440, 328)
+    time.sleep(0.5)  # Attendre un peu pour être sûr que l'interface réagisse
+    pyautogui.click(486, 360)
+    time.sleep(1.5)
+
+    pyautogui.click(305, 221)
+    time.sleep(1)  # Attendre un peu pour être sûr que l'interface réagisse
+    pyautogui.click(309, 299)
+    time.sleep(1)  # Attendre un peu pour être sûr que l'interface réagisse
+    pyautogui.click(479, 316)
+    time.sleep(4)  # Attendre un peu pour être sûr que l'interface réagisse
+    pyautogui.click(541, 383)
+    time.sleep(0.5)  # Attendre un peu pour être sûr que l'interface réagisse
+    pyautogui.click(563, 395)
+    time.sleep(1.5)  # Attendre un peu pour être sûr que l'interface réagisse
+    pyautogui.click(163, 415)
+    time.sleep(0.5)  # Attendre un peu pour être sûr que l'interface réagisse
+    pyautogui.click(726, 275)
+    time.sleep(0.5)  # Attendre un peu pour être sûr que l'interface réagisse
+    
+    pyautogui.keyDown('ctrl')
+    for _ in range(20):
+        pyautogui.doubleClick(680, 342)
+        time.sleep(0.3)  # Attendre un peu pour être sûr que l'interface réagisse
+    pyautogui.keyUp('ctrl')
+
+    pyautogui.press('esc')
+    time.sleep(0.5)  # Attendre un peu pour être sûr que l'interface réagisse
+    pyautogui.doubleClick(741, 725)
+    time.sleep(0.5)  # Attendre un peu pour être sûr que l'interface réagisse
+
+    pyautogui.click(484, 147)
+    time.sleep(4)
+
+    pyautogui.click(862, 563)
+    time.sleep(4)
+
+    pyautogui.click(673, 147)
+    time.sleep(8)
+
+    pyautogui.click(104, 146)
+    time.sleep(10)
+
+    pyautogui.click(860, 371)
+    time.sleep(8)
 
 
 # Add this function to execute the spell sequence
