@@ -13,7 +13,7 @@ Pour utiliser ce bot, vous aurez besoin de Python 3.x et de quelques modules sup
 Clonez ce dépôt sur votre machine locale :
 
 ```bash
-git clone https://github.com/[VotreNomdUtilisateur]/bot-dofus.git
+git clone https://github.com/berthiercyril/bot-dofus.git
 ```
 
 Installez les dépendances nécessaires :
