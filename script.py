@@ -150,7 +150,7 @@ def initiate_combat():
                 return True
 
         print("Aucune couleur trouvée, nouvelle tentative dans 0,1 secondes...")
-        time.sleep(0.8)
+        time.sleep(0.4)
 
 
 def is_ready():
@@ -239,21 +239,31 @@ def resize_window(window_title, width, height):
 
 def transparency_mode():
     print("Vérification de la transparence..")
-    dofus_window_rect = get_dofus_window()
+
+    color_position = find_color("#FCEBC4")
     
-    if dofus_window_rect is not None:
-        color_position = find_color("#FCEBC4", dofus_window_rect)
-        
-        if color_position is None:
-            pyautogui.hotkey('t')  # Si la couleur n'est pas trouvée, appuyez sur "t"
-            print("Transparence Désactivée.")
+    if color_position is None:
+        pyautogui.hotkey('t')  # Si la couleur n'est pas trouvée, appuyez sur "t"
+        print("Transparence Désactivée.")
 
 
 def find_color(hex_color):
+    dofus_rect_obj = get_dofus_window()
+    if dofus_rect_obj is None:
+        return None
+
+    x = dofus_rect_obj.left
+    y = dofus_rect_obj.top
+    x2 = dofus_rect_obj.right
+    y2 = dofus_rect_obj.bottom
+    
+    width = x2 - x
+    height = y2 - y
+    
     hex_color = hex_color.lstrip('#')
     rgb = tuple(int(hex_color[i:i+2], 16) for i in (0, 2, 4))
 
-    screenshot = pyautogui.screenshot()
+    screenshot = pyautogui.screenshot(region=(x, y, width, height))
     screenshot_np = np.array(screenshot)
     image = screenshot_np[..., :3]
 
@@ -261,8 +271,11 @@ def find_color(hex_color):
     coords = list(zip(indices[1], indices[0]))
 
     if coords:
-        return coords[0]
+        # Convertir les coordonnées locales en coordonnées globales de l'écran
+        global_coords = [(local_x + x, local_y + y) for local_x, local_y in coords]
+        return global_coords
     return None
+
 
 def check_end_combat():
     global turn_counter  # Déclaration de la variable globale
@@ -354,55 +367,55 @@ def check_pods(x=465, y=678, target_color='#60BE34'): # 465 678  | #60BE34
     
 def travel_to_bank():
     print("Voyage à la banque...")
-    time.sleep(random.randint(2,3))  # Attendre un peu pour être sûr que l'interface réagisse
+    time.sleep(random.uniform(2,3))  # Attendre un peu pour être sûr que l'interface réagisse
     pyautogui.doubleClick(772, 721)
-    time.sleep(random.randint(0.5,1.5))  # Attendre un peu pour être sûr que l'interface réagisse
+    time.sleep(random.uniform(0.5,1.5))  # Attendre un peu pour être sûr que l'interface réagisse
 
     pyautogui.click(440, 328)
-    time.sleep(random.randint(0.5,1.5))  # Attendre un peu pour être sûr que l'interface réagisse
+    time.sleep(random.uniform(0.5,1.5))  # Attendre un peu pour être sûr que l'interface réagisse
     pyautogui.click(486, 360)
-    time.sleep(random.randint(1.5,2.5))
+    time.sleep(random.uniform(1.5,2.5))
 
     pyautogui.click(305, 221)
-    time.sleep(random.randint(1,2))  # Attendre un peu pour être sûr que l'interface réagisse
+    time.sleep(random.uniform(1,2))  # Attendre un peu pour être sûr que l'interface réagisse
     pyautogui.click(309, 299)
-    time.sleep(random.randint(1,2))  # Attendre un peu pour être sûr que l'interface réagisse
+    time.sleep(random.uniform(1,2))  # Attendre un peu pour être sûr que l'interface réagisse
     pyautogui.click(479, 316)
-    time.sleep(random.randint(4,5))  # Attendre un peu pour être sûr que l'interface réagisse
+    time.sleep(random.uniform(4,5))  # Attendre un peu pour être sûr que l'interface réagisse
     pyautogui.click(541, 383)
-    time.sleep(random.randint(0.5,1))  # Attendre un peu pour être sûr que l'interface réagisse
+    time.sleep(random.uniform(0.5,1))  # Attendre un peu pour être sûr que l'interface réagisse
     pyautogui.click(563, 395)
-    time.sleep(random.randint(1.5,2.5))  # Attendre un peu pour être sûr que l'interface réagisse
+    time.sleep(random.uniform(1.5,2.5))  # Attendre un peu pour être sûr que l'interface réagisse
     pyautogui.click(163, 415)
-    time.sleep(random.randint(0.5,1.5))  # Attendre un peu pour être sûr que l'interface réagisse
+    time.sleep(random.uniform(0.5,1.5))  # Attendre un peu pour être sûr que l'interface réagisse
     pyautogui.click(726, 275)
-    time.sleep(random.randint(0.5,1.5))  # Attendre un peu pour être sûr que l'interface réagisse
+    time.sleep(random.uniform(0.5,1.5))  # Attendre un peu pour être sûr que l'interface réagisse
     
     pyautogui.keyDown('ctrl')
     for _ in range(20):
         pyautogui.doubleClick(680, 342)
-        time.sleep(random.randint(0.3,0.9))  # Attendre un peu pour être sûr que l'interface réagisse
+        time.sleep(random.uniform(0.3,0.9))  # Attendre un peu pour être sûr que l'interface réagisse
     pyautogui.keyUp('ctrl')
 
     pyautogui.press('esc')
-    time.sleep(random.randint(0.5,1.5))  # Attendre un peu pour être sûr que l'interface réagisse
+    time.sleep(random.uniform(0.5,1.5))  # Attendre un peu pour être sûr que l'interface réagisse
     pyautogui.doubleClick(741, 725)
-    time.sleep(random.randint(0.5,1.5))  # Attendre un peu pour être sûr que l'interface réagisse
+    time.sleep(random.uniform(0.5,1.5))  # Attendre un peu pour être sûr que l'interface réagisse
 
     pyautogui.click(484, 147)
-    time.sleep(random.randint(4,5))
+    time.sleep(random.uniform(4,5))
 
     pyautogui.click(862, 563)
-    time.sleep(random.randint(4,5))
+    time.sleep(random.uniform(4,5))
 
     pyautogui.click(673, 147)
-    time.sleep(random.randint(8,9))
+    time.sleep(random.uniform(8,9))
 
     pyautogui.click(104, 146)
-    time.sleep(random.randint(10,11))
+    time.sleep(random.uniform(10,11))
 
     pyautogui.click(860, 371)
-    time.sleep(random.randint(8,9))
+    time.sleep(random.uniform(8,9))
 
 
 # Add this function to execute the spell sequence
@@ -423,7 +436,7 @@ def execute_spell_bouftou():
 
     # Lance le spell 1 et 2, puis passe son tour
     self_cast_spell('1')
-    time.sleep(random.randint(2, 3))
+    time.sleep(random.uniform(2, 3))
     self_cast_spell('2')
     pyautogui.press('space')
     print("Turn finished")
